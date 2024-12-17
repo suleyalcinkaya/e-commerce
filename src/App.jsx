@@ -1,14 +1,15 @@
 
 import HomePage from "./pages/HomePage";
-import './index.css';
 import SignUpForm from "./pages/SignUpForm";
+import './index.css';
+
 
 
 function App() {
   return (
     <div>
       <HomePage/>
-      <SignUpForm/>
+      <SignUpForm />
     </div>
   );
 }

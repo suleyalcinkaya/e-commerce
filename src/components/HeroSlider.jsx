@@ -1,17 +1,18 @@
-import React from "react";
+import PrimaryButton from "./PrimaryButton";
 
 const HeroSlider = () => {
   return (
-    <div className=" justify-items-center bg-hero bg-no-repeat bg-cover bg-full p-48 rounded-lg  ">
-      <h2 className="text-center text-sm text-white"> SUMMER 2024</h2>
-      <h1 className="text-center text-2xl font-bold text-white mt-4">NEW COLLECTION</h1>
-      <p className="text-center text-sm text-white min-w-44 mt-4 ">
+    <div className=" w-full h-screen flex flex-col items-center justify-center gap-6 flex-shrink-0 overflow-hidden bg-hero bg-cover bg-center bg-no-repeat text-white text-center">
+
+      <h2 className=" text-[3rem] text-white">SUMMER 2024</h2>
+      <h1 className="text-[6rem] font-bold text-white">NEW <br /> COLLECTION</h1>
+      <p className=" text-[3rem] text-white min-w-44 max-w-[70%]
+">
         We know how large objects will act, but things on a small scale.
       </p>
-      <button className="self-center mt-4 min-w-32 px-4 py-2 bg-green-600 text-white font-bold rounded-lg ">
+      <PrimaryButton>
         SHOP NOW
-      </button>
-     
+      </PrimaryButton>
     </div>
   );
 };

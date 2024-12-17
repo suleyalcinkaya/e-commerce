@@ -1,25 +1,33 @@
 import React, { useState } from "react";
 import { Menu, Search, ShoppingCart, User } from "lucide-react";
-
+import { useHistory} from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const history = useHistory();
+  /**
+   * Toggle the menu open or closed state.
+   */
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const goToSignUpForm = () => {
+    history.push("/signup");
+  };
+
   return (
-    <header className="bg-white  ">
+    <header className="bg-white py-4">
       <div className="flex items-center justify-between px-10 p-4">
    
-        <div className="text-2xl font-bold ">Bandage</div>
+        <h2 className="">Store</h2>
 
 
         
         <div className="flex gap-3 ">
           <Search />
-          <User  />
+          <User onClick={goToSignUpForm} style={{ cursor: "pointer" }} />
           <ShoppingCart />
           <Menu onClick={toggleMenu} />
         </div>

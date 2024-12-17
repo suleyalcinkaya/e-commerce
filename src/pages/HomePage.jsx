@@ -8,12 +8,12 @@ import CategoryPick from "../components/CategoryPick";
 
 const HomePage = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="">
       <Header />
       <HeroSlider />
-      <CategoryPick/>
+      {/* <CategoryPick/>
       <ProductCategoryList />
-      <Footer/>
+      <Footer/> */}
     </div>
   );
 };
