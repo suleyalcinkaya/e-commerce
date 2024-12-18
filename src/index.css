@@ -7,19 +7,52 @@
     
 }
 
+@media screen and (max-width: 768px) {
+  .form-container {
+    padding: 0.75rem;
+    margin: 0.5rem;
+  }
 
-  h1 {
-    font-size: 55px;
-    font-weight: 600;
+  .form-heading {
+    font-size: 1.5rem !important;
+    margin-bottom: 1rem !important;
   }
-  
-  h2 {
-    font-size: 40px;
-    font-weight: 600
+
+  .form-label {
+    font-size: 1rem !important;
+    margin-bottom: 0.25rem !important;
   }
-  
-  h3 {
+
+  .form-input {
+    padding: 0.5rem !important;
+    font-size: 0.875rem !important;
+    border-radius: 0.5rem !important;
   }
-  
-  h4 {
+
+  .form-button {
+    padding: 0.75rem !important;
+    font-size: 1rem !important;
+    border-radius: 0.5rem !important;
   }
+
+  .form-error {
+    font-size: 0.75rem !important;
+    margin-top: 0.25rem !important;
+  }
+
+  .form-link {
+    font-size: 0.875rem !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .form-container {
+    padding: 0.5rem;
+    margin: 0.25rem;
+  }
+
+  .form-input, 
+  .form-button {
+    padding: 0.5rem !important;
+  }
+}
