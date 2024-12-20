@@ -22,90 +22,98 @@ const Login = () => {
         localStorage.setItem('token', response.data.token);
         history.push('/');
       }
-    } catch (err) {
-      console.error('Error during login:', err);
-      if (err.response?.data?.message) {
-        setErrorState(err.response.data.message);
-      } else {
-        setErrorState('An error occurred during login. Please try again.');
-      }
+    } catch (error) {
+      setErrorState('Invalid email or password');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen w-screen flex items-center justify-center fixed inset-0 bg-gray-50">
-      <div className="w-full max-w-xl mx-4 sm:mx-6 form-container">
-        <form onSubmit={handleSubmit(onSubmit)} className="bg-white rounded-lg shadow-xl px-4 sm:px-8 py-6 sm:py-8 mb-6">
-          <h2 className="form-heading text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center text-gray-800">Login</h2>
-          
+    <div className="min-h-screen bg-gray-50 flex flex-col py-12 px-4 sm:px-6 lg:px-8">
+      <button
+        onClick={() => history.push('/')}
+        className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-8 self-start"
+      >
+        ← Go back to home page
+      </button>
+
+      <div className="max-w-md w-full mx-auto">
+        <div className="text-center">
+          <h2 className="text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
+          <p className="mt-2 text-sm text-gray-600">
+            Or{' '}
+            <button
+              onClick={() => history.push('/signup')}
+              className="font-medium text-blue-600 hover:text-blue-500"
+            >
+              create a new account
+            </button>
+          </p>
+        </div>
+
+        <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
           {error && (
-            <div className="mb-4 p-2 sm:p-3 text-red-700 bg-red-100 rounded-lg text-sm">
+            <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded">
               {error}
             </div>
           )}
 
-          <label className="block mb-4 sm:mb-6">
-            <span className="form-label text-base sm:text-lg text-gray-700 block mb-1 sm:mb-2">Email:</span>
-            <input
-              type="email"
-              className="form-input w-full p-2 sm:p-3 text-sm sm:text-base border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              placeholder="Enter your email"
-              {...register('email', { 
-                required: 'Email is required',
-                pattern: { 
-                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: 'Invalid email address'
-                }
-              })}
-            />
-            {errors.email && <p className="form-error text-red-500 text-xs sm:text-sm mt-1">{errors.email.message}</p>}
-          </label>
+          <div className="rounded-md shadow-sm space-y-4">
+            <div>
+              <label htmlFor="email" className="sr-only">
+                Email address
+              </label>
+              <input
+                id="email"
+                type="email"
+                {...register('email', {
+                  required: 'Email is required',
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: 'Invalid email address',
+                  },
+                })}
+                className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                placeholder="Email address"
+              />
+              {errors.email && (
+                <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+              )}
+            </div>
+            <div>
+              <label htmlFor="password" className="sr-only">
+                Password
+              </label>
+              <input
+                id="password"
+                type="password"
+                {...register('password', {
+                  required: 'Password is required',
+                  minLength: {
+                    value: 6,
+                    message: 'Password must be at least 6 characters',
+                  },
+                })}
+                className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                placeholder="Password"
+              />
+              {errors.password && (
+                <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>
+              )}
+            </div>
+          </div>
 
-          <label className="block mb-4 sm:mb-6">
-            <span className="form-label text-base sm:text-lg text-gray-700 block mb-1 sm:mb-2">Password:</span>
-            <input
-              type="password"
-              className="form-input w-full p-2 sm:p-3 text-sm sm:text-base border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              placeholder="Enter your password"
-              {...register('password', { 
-                required: 'Password is required'
-              })}
-            />
-            {errors.password && <p className="form-error text-red-500 text-xs sm:text-sm mt-1">{errors.password.message}</p>}
-          </label>
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="form-button w-full bg-indigo-600 text-white py-3 sm:py-4 px-4 sm:px-6 rounded-lg text-lg sm:text-xl font-medium hover:bg-indigo-700 transition-colors disabled:bg-indigo-300 mt-4 sm:mt-6 flex items-center justify-center"
-          >
-            {loading ? (
-              <>
-                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                <span className="text-base sm:text-lg">Logging in...</span>
-              </>
-            ) : (
-              'Log In'
-            )}
-          </button>
-        </form>
-
-        <div className="text-center">
-          <p className="form-link text-gray-600 text-base sm:text-lg">
-            Don't have an account?{' '}
+          <div>
             <button
-              onClick={() => history.push('/signup')}
-              className="form-link text-indigo-600 hover:text-indigo-800 font-medium transition-colors text-base sm:text-lg"
+              type="submit"
+              disabled={loading}
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
             >
-              Sign Up
+              {loading ? 'Signing in...' : 'Sign in'}
             </button>
-          </p>
-        </div>
+          </div>
+        </form>
       </div>
     </div>
   );

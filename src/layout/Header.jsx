@@ -6,9 +6,6 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const history = useHistory();
 
-  /**
-   * Toggle the menu open or closed state.
-   */
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -24,13 +21,13 @@ const Header = () => {
   return (
     <header className="bg-white py-4">
       <div className="flex items-center justify-between px-16 p-4">
-        <h2 onClick={() => navigate('/')} className="cursor-pointer" style={{ fontWeight: 'bold' }}>Store</h2>
+        <h2 onClick={() => navigate('/')} className="text-5xl font-bold cursor-pointer">Store</h2>
         
         <div className="flex gap-6 items-center py-4">
-          <Search style={{ width: '48px', height: '48px' }} strokeWidth={2.5} />
-          <User onClick={goToSignUpForm} style={{ width: '48px', height: '48px', cursor: 'pointer' }} strokeWidth={2.5} />
-          <ShoppingCart style={{ width: '48px', height: '48px' }} strokeWidth={2.5} />
-          <Menu onClick={toggleMenu} style={{ width: '48px', height: '48px', cursor: 'pointer' }} strokeWidth={2.5} />
+          <Search style={{ width: '56px', height: '56px' }} strokeWidth={2.5} />
+          <User onClick={goToSignUpForm} style={{ width: '56px', height: '56px', cursor: 'pointer' }} strokeWidth={2.5} />
+          <ShoppingCart style={{ width: '56px', height: '56px' }} strokeWidth={2.5} />
+          <Menu onClick={toggleMenu} style={{ width: '56px', height: '56px', cursor: 'pointer' }} strokeWidth={2.5} />
         </div>
       </div>
 
