@@ -13,49 +13,49 @@ const FeaturedProducts = () => {
       id: 2,
       name: "Summer Floral Dress",
       price: 49.99,
-      image: "/images/pick2.png",
+      image: "/images/pick1.png",
       category: "Women"
     },
     {
       id: 3,
       name: "Leather Crossbody Bag",
       price: 79.99,
-      image: "/images/pick3.png",
+      image: "/images/pick1.png",
       category: "Accessories"
     },
     {
       id: 4,
       name: "Kids Denim Jacket",
       price: 39.99,
-      image: "/images/pick4.png",
+      image: "/images/pick1.png",
       category: "Kids"
     },
     {
       id: 5,
       name: "Classic Sunglasses",
       price: 24.99,
-      image: "/images/pick5.png",
+      image: "/images/pick1.png",
       category: "Accessories"
     },
     {
       id: 6,
       name: "Casual Sneakers",
       price: 59.99,
-      image: "/images/pick6.png",
+      image: "/images/pick1.png",
       category: "Men"
     },
     {
       id: 7,
       name: "Evening Gown",
       price: 129.99,
-      image: "/images/pick7.png",
+      image: "/images/pick1.png",
       category: "Women"
     },
     {
       id: 8,
       name: "Kids Party Dress",
       price: 44.99,
-      image: "/images/pick8.png",
+      image: "/images/pick1.png",
       category: "Kids"
     }
   ];

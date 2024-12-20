@@ -13,7 +13,7 @@ const HomePage = () => {
   
 
   return (
-    <div className="min-h-sreen">
+    <div className="min-h-screen">
       <Header />
       <HeroSlider />
       <CategoryPick/>
