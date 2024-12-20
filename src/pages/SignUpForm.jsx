@@ -76,7 +76,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 lg:px-12">
       <button
         onClick={() => history.push('/')}
         className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-8 self-start"
@@ -84,7 +84,7 @@ const SignUpForm = () => {
         ← Go back to home page
       </button>
 
-      <div className="max-w-md w-full mx-auto">
+      <div className="sm:mx-auto sm:w-full sm:max-w-2xl">
         <div className="w-full max-w-3xl mx-4 sm:mx-6 form-container">
           <form onSubmit={handleSubmit(onSubmit)} className="bg-white rounded-lg shadow-xl px-4 sm:px-8 py-6 sm:py-8 mb-6">
             <h2 className="form-heading text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center text-gray-800">Sign Up</h2>

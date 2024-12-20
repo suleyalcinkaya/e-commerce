@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
@@ -13,6 +13,14 @@ const Login = () => {
     baseURL: 'https://workintech-fe-ecommerce.onrender.com',
   });
 
+  let mounted = true;
+
+  useEffect(() => {
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
   const onSubmit = async (data) => {
     setLoading(true);
     setErrorState('');
@@ -23,14 +31,18 @@ const Login = () => {
         history.push('/');
       }
     } catch (error) {
-      setErrorState('Invalid email or password');
+      if (mounted) {
+        setErrorState('Invalid email or password');
+      }
     } finally {
-      setLoading(false);
+      if (mounted) {
+        setLoading(false);
+      }
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 flex justify-center items-center py-12 sm:px-6">
       <button
         onClick={() => history.push('/')}
         className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-8 self-start"
@@ -38,7 +50,7 @@ const Login = () => {
         ← Go back to home page
       </button>
 
-      <div className="max-w-md w-full mx-auto">
+      <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="text-center">
           <h2 className="text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
           <p className="mt-2 text-sm text-gray-600">
