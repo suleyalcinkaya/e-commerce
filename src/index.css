@@ -87,4 +87,53 @@
   .form-textarea {
     @apply p-2 text-sm;
   }
+
+  .home-page {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .home-header {
+    background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .product-showcase {
+    padding: 20px;
+  }
+
+  .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .product-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+    text-align: center;
+  }
+
+  .home-footer {
+    background-color: #f8f9fa;
+    padding: 10px;
+    text-align: center;
+  }
+}
+
+@layer components {
+
+  @media (min-width: 1024px) {
+    .product-list {
+      justify-content: flex-start; /* Align items to the start */
+    }
+    .product-item {
+      width: 350px; /* Further increase width for larger screens */
+    }
+  }
 }

@@ -46,6 +46,7 @@ const Login = () => {
       <button
         onClick={() => history.push('/')}
         className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-8 self-start"
+        
       >
         ← Go back to home page
       </button>

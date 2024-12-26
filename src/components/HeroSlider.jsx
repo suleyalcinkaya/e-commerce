@@ -1,5 +1,6 @@
 import React from "react";
 import PrimaryButton from "./PrimaryButton";
+import { Link } from 'react-router-dom'; 
 
 const HeroSlider = () => {
   return (
@@ -9,9 +10,11 @@ const HeroSlider = () => {
       <p className="text-[3rem] text-white min-w-44 max-w-[70%]">
         We know how large objects will act, but things on a small scale.
       </p>
-      <PrimaryButton>
-        SHOP NOW
-      </PrimaryButton>
+      <Link to="/shop">
+        <PrimaryButton> 
+          SHOP NOW 
+        </PrimaryButton>
+      </Link>
     </div>
   );
 };
