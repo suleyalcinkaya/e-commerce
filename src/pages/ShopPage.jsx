@@ -1,5 +1,3 @@
-
-    
 import React, { useEffect } from 'react';
 import Header from '../layout/Header';
 import ProductCategoryList from '@/components/ProductCategoryList';
@@ -21,42 +19,43 @@ const ShopPage = () => {
     const dispatch = useDispatch();
     const {productList, fetchState, total, limit, offset} = useSelector((state) => state.product);
     const products = productList || [];
-    const { gender, categoryName, categoryId } = useParams();
+    const { gender, category, categoryId } = useParams();
     useEffect(() => {
         dispatch(setOffset(0));
         
-      }, [dispatch, categoryId, categoryName, gender]);
+      }, [dispatch, categoryId, category, gender]);
     useEffect(() => {
         dispatch(fetchProductList({ category: categoryId }));
       }, [dispatch, categoryId,limit, offset, gender]);
 
 
     return (
-        <div className='shop-page'>
+        <div className='flex flex-col min-h-screen bg-gray-50'>
             {/* Header Section */}
-            <header className='shop-header'>
+            <header className='bg-white shadow'>
                 <Header />
             </header>
 
             {/* Main Content Section */}
-            <div className='shop-container' style={{ display: 'flex', flexDirection: 'row' }}>
+           
                 {/* Sidebar 
                 <aside className='shop-sidebar' style={{ width: '20%', borderRight: '1px solid #ddd' }}>
                     <Sidebar />
                 </aside> */}
 
 
-            </div>
+            
 
             <ProductCategoryList />
-            <div
-            className={
-              'grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
-            }
-          >
+
+           
+            <main className="flex-1 p-4">
+
+            <div className="container mx-auto grid gap-6 grid-cols-1 sm:grid-cols-3">
+
             {products.map((product, ind) => {
               const slug = createSlug(product.name);
-              const productUrl = `/shop/${gender || 'erkek'}/${categoryName || 'category'}/${categoryId || '0'}/${slug}/${product.id}`;
+              const productUrl = `/shop/${gender || 'erkek'}/${category || 'category'}/${categoryId || '0'}/${slug}/${product.id}`;
               return (
                 <div 
                 key={ind}
@@ -103,6 +102,7 @@ const ShopPage = () => {
             );
           })}
         </div>
+        </main>
 
 
             {/* Footer Section */}

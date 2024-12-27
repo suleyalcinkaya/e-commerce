@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 
 const ProductCategoryList = () => {
   const [categories, setCategories] = useState([]);
@@ -31,7 +32,7 @@ const ProductCategoryList = () => {
   return (
     <div className="flex flex-col items-center" >
       <h2 style={{ marginBottom: "20px" }}>Product Categories</h2>
-      <div className="grid grid-cols-1 lg:grid-cols-3">
+      <div className="container mx-auto grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5">
         {topCategories.map((category) => (
           <div className="relative group"
             key={category.id}

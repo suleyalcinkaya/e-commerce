@@ -15,7 +15,7 @@ const Login = () => {
 
   let mounted = true;
 
-  useEffect(() => {
+  useEffect(() => { 
     return () => {
       mounted = false;
     };
