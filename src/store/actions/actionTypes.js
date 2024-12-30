@@ -12,6 +12,15 @@ export const SET_FETCH_STATE = 'SET_FETCH_STATE';
 export const SET_LIMIT = 'SET_LIMIT';
 export const SET_OFFSET = 'SET_OFFSET';
 export const SET_FILTER = 'SET_FILTER';
+export const SET_LOADING = 'SET_LOADING';
+export const SET_ERROR = 'SET_ERROR';
+export const SET_SORT = 'SET_SORT';
+export const SET_SELECTED_PRODUCT = 'SET_SELECTED_PRODUCT';
+
+// Category Action Types
+export const FETCH_CATEGORIES_START = 'FETCH_CATEGORIES_START';
+export const FETCH_CATEGORIES_SUCCESS = 'FETCH_CATEGORIES_SUCCESS';
+export const FETCH_CATEGORIES_FAILURE = 'FETCH_CATEGORIES_FAILURE';
 
 // Cart Action Types
 export const SET_CART = 'SET_CART';

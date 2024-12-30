@@ -1,13 +1,29 @@
-import { FETCH_CATEGORIES_SUCCESS, FETCH_CATEGORIES_FAILURE } from './actionTypes';
+import axios from 'axios';
+import * as actionTypes from './actionTypes';
+
+export const fetchCategoriesStart = () => ({
+  type: actionTypes.FETCH_CATEGORIES_START
+});
+
+export const fetchCategoriesSuccess = (categories) => ({
+  type: actionTypes.FETCH_CATEGORIES_SUCCESS,
+  payload: categories
+});
+
+export const fetchCategoriesFailure = (error) => ({
+  type: actionTypes.FETCH_CATEGORIES_FAILURE,
+  payload: error
+});
 
 export const fetchCategories = () => {
-    return async (dispatch) => {
-        try {
-            const response = await fetch('https://workintech-fe-ecommerce.onrender.com/categories');
-            const data = await response.json();
-            dispatch({ type: FETCH_CATEGORIES_SUCCESS, payload: data });
-        } catch (error) {
-            dispatch({ type: FETCH_CATEGORIES_FAILURE, payload: error.message });
-        }
-    };
+  return async (dispatch) => {
+    dispatch(fetchCategoriesStart());
+    try {
+      const response = await axios.get('https://workintech-fe-ecommerce.onrender.com/categories');
+      dispatch(fetchCategoriesSuccess(response.data));
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+      dispatch(fetchCategoriesFailure(error.message));
+    }
+  };
 };
