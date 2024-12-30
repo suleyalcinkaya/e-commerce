@@ -8,6 +8,7 @@ export const setFilter = (filter) => ({ type: 'SET_FILTER', payload: filter });
 export const setSelectedProduct = (product) => ({ type: 'SET_SELECTED_PRODUCT', payload: product });
 
 
+/*
 export const fetchCategories = () => {
   return async (dispatch) => {
     dispatch(setFetchState("FETCHING"));
@@ -21,7 +22,7 @@ export const fetchCategories = () => {
       dispatch(setFetchState("ERROR"));
     }
   };
-};
+};*/
 
 export const fetchProduct = (productId) => {
   return async (dispatch) => {

@@ -50,6 +50,14 @@ const ShopPage = () => {
 
            
             <main className="flex-1 p-4">
+            {/* Show loading spinner while data is being fetched */}
+            {fetchState === 'loading' ? (
+            <div className="flex justify-center items-center h-64">
+                <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
+            </div>
+            ) : fetchState === 'error' ? (
+            <div className="text-center text-red-500">Failed to fetch products. Please try again later.</div>
+            ) : (
 
             <div className="container mx-auto grid gap-6 grid-cols-1 sm:grid-cols-3">
 
@@ -102,6 +110,7 @@ const ShopPage = () => {
             );
           })}
         </div>
+        )}  
         </main>
 
 
