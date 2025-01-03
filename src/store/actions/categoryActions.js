@@ -22,7 +22,6 @@ export const fetchCategories = () => {
       const response = await axios.get('https://workintech-fe-ecommerce.onrender.com/categories');
       dispatch(fetchCategoriesSuccess(response.data));
     } catch (error) {
-      console.error("Error fetching categories:", error);
       dispatch(fetchCategoriesFailure(error.message));
     }
   };

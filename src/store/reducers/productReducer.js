@@ -43,6 +43,11 @@ const productReducer = (state = initialState, action) => {
         loading: false,
         error: action.payload
       };
+    case actionTypes.SET_SELECTED_PRODUCT:
+      return {
+        ...state,
+        selectedProduct: action.payload
+      };
     // ... existing category cases
     default:
       return state;

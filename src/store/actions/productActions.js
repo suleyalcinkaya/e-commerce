@@ -41,15 +41,23 @@ export const fetchProducts = (params = {}) => {
     dispatch(setLoading(true));
     try {
       const queryParams = new URLSearchParams();
-      if (params.category) queryParams.append('category', params.category);
-      if (params.sort) queryParams.append('sort', params.sort);
-      if (params.filter) queryParams.append('filter', params.filter);
+      
+      // Add all parameters to query string
+      Object.entries(params).forEach(([key, value]) => {
+        if (value) {
+          // Convert offset and limit to numbers
+          if (key === 'offset' || key === 'limit') {
+            queryParams.append(key, Number(value));
+          } else {
+            queryParams.append(key, value);
+          }
+        }
+      });
 
       const url = `https://workintech-fe-ecommerce.onrender.com/products?${queryParams.toString()}`;
-      console.log('Fetching from URL:', url); // Debug log
+      console.log('Fetching from URL:', url);
 
       const response = await axios.get(url);
-      console.log('API Response:', response.data); // Debug log
       
       if (!response.data || !response.data.products) {
         throw new Error('Invalid response format');
@@ -59,7 +67,7 @@ export const fetchProducts = (params = {}) => {
       dispatch(setTotal(response.data.total));
       dispatch(setError(null));
     } catch (error) {
-      console.error('Error fetching products:', error); // Debug log
+      console.error('Error fetching products:', error);
       dispatch(setError(error.message || 'Failed to fetch products'));
     } finally {
       dispatch(setLoading(false));
